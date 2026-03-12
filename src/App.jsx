@@ -29,6 +29,21 @@ export default function LahainaBirdStand() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    // Setmore requires its script to be loaded into the DOM dynamically
+    // A JSX <script> tag is ignored by React — this is the correct approach
+    const script = document.createElement("script");
+    script.id = "anywhere_book_now_script";
+    script.src = "https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js";
+    script.type = "text/javascript";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      const existing = document.getElementById("anywhere_book_now_script");
+      if (existing) existing.remove();
+    };
+  }, []);
+
   const scrollTo = (id) => {
     setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -307,7 +322,6 @@ export default function LahainaBirdStand() {
             <p style={{ fontSize: 14, fontWeight: 300, color: S.muted, lineHeight: 1.8, maxWidth: 420, margin: "0 auto 32px" }}>
               Click below to choose your date and time. You'll receive an instant confirmation automatically.
             </p>
-            <script id="anywhere_book_now_script" type="text/javascript" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js" />
             <button
               id="Anywhere_button_iframe"
               className="anywhere-book-now-button btn btn-gold"
