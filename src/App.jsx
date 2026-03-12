@@ -323,11 +323,9 @@ export default function LahainaBirdStand() {
               Click below to choose your date and time. You'll receive an instant confirmation automatically.
             </p>
             <button
-              id="Anywhere_button_iframe"
-              className="anywhere-book-now-button btn btn-gold"
-              data-booking-url="https://thebirdstand.setmore.com"
-              data-new-tab="false"
-              style={{ fontSize: 12, padding: "16px 48px", letterSpacing: "2.5px" }}
+               className="btn btn-gold"
+               onClick={() => window.open("https://thebirdstand.setmore.com", "_blank", "width=900,height=700")}
+               style={{ fontSize: 12, padding: "16px 48px", letterSpacing: "2.5px" }}
             >
               Book Now
             </button>
